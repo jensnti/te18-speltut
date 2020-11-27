@@ -2,6 +2,7 @@
 	"textures": [
 		{
 			"image": "cavedude.png",
+			"normalMap": "cavedude.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 58,
