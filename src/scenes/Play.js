@@ -93,13 +93,13 @@ export default class PlayScene extends Phaser.Scene {
 
     // this.scene.launch('pause');
     // // https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scenemanager/
-    // this.esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-    // this.esc.on('down', () => {
-    //   // this.scene.pause('play');
-    //   // this.scene.setVisible(true, 'pause');
-    //   // this.scene.moveUp('pause');
-    //   this.scene.switch('pause');
-    // });
+    const esc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+    esc.on('down', () => {
+      // this.scene.pause('play');
+      // this.scene.setVisible(true, 'pause');
+      // this.scene.moveUp('pause');
+      this.scene.switch('pause');
+    });
 
   }
 
@@ -109,9 +109,9 @@ export default class PlayScene extends Phaser.Scene {
     //     return;
     // }
 
-    // if (this.scene.isVisible('pause')) {
-    //   this.scene.setVisible(false, 'pause');
-    // }
+    if (this.scene.isVisible('pause')) {
+      this.scene.setVisible(false, 'pause');
+    }
 
     if (this.cursors.left.isDown)
     {
