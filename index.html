@@ -46,6 +46,7 @@ var game = new Phaser.Game(config);
 function preload ()
 {
     this.load.image('sky', 'assets/sky.png');
+    this.load.image('clip', 'assets/clip.png');
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
@@ -69,7 +70,7 @@ function create ()
 
     //  Now let's create some ledges
     platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
+    platforms.create(200, 250, 'clip').setTint(0xff0000).setScale(6, 1).refreshBody();
     platforms.create(750, 220, 'ground');
 
     // The player and its settings
