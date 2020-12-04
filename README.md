@@ -13,3 +13,12 @@ https://github.com/jensnti/te18-speltut/commit/5ce50f75ac90dfb578cdf13870a03648c
 
 En pause scene
 https://github.com/jensnti/te18-speltut/commit/b50d3f6fb850de9c591e67ef94d600e70506a449
+
+Med en multiatlas går det inte för parcel att ladda filerna, anv. static assets.
+https://github.com/jensnti/te18-speltut/commit/40e59a949ed8f1d628908bdbd6ad883839fac600
+
+För att skapa en stor värld med kamera som följer spelaren
+https://github.com/jensnti/te18-speltut/commit/bf0ec62dc1059b6f4750ea87c07966570e4ebf2a
+
+Säg åt parcel att använda docs mapp istället för dist så att det funkar bra med github pages
+https://github.com/jensnti/te18-speltut/commit/d537644d7cacabf919dcd81a6046558edc8aeb7a
