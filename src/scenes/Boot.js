@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 import images from './../assets/*.png';
-import jsons from './../assets/*.json';
 
 export default class BootScene extends Phaser.Scene {
   constructor () {
@@ -12,14 +11,16 @@ export default class BootScene extends Phaser.Scene {
     var bar = this.add.rectangle(bg.x, bg.y, bg.width, bg.height, 0xffffff).setScale(0, 1);
 
     console.table(images);
-    console.table(jsons);
 
     this.load.image('clip', images.clip);
     this.load.image('sky', images.sky);
     this.load.image('ground', images.platform);
     this.load.image('star', images.star);
     this.load.image('bomb', images.bomb);
-    this.load.multiatlas('cavedude', jsons.cavedude);
+    this.load.multiatlas(
+      'cavedude',
+      'assets/cavedude.json',
+      'assets/');
 
     this.load.on('progress', function (progress) {
       bar.setScale(progress, 1);

@@ -13,6 +13,7 @@
   "author": "Jens",
   "license": "ISC",
   "dependencies": {
+    "parcel-plugin-static-files-copy": "^2.5.0",
     "phaser": "^3.20.1"
   },
   "devDependencies": {
