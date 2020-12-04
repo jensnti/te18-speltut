@@ -20,6 +20,9 @@ export default class PlayScene extends Phaser.Scene {
     this.bg = this.add.image(400, 300, 'sky');
     this.bg.setScrollFactor(0); // lås bakgrunden till kameran
 
+    this.cloud = this.add.image(32, 96, 'clip');
+    this.cloud.setScrollFactor(0.2); // scrolla framf. bakgrunden i annan ratio
+
     //  The platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.physics.add.staticGroup();
 
