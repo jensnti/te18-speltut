@@ -1,6 +1,6 @@
 # te18-speltut
 
-## Phaser exemepl, nu med parcel
+## Phaser exempel, nu med parcel
 
 Kolla här för hur du anv. en sprite atlas
 https://github.com/jensnti/te18-speltut/commit/a42ab1bb0adaaff490358898613ff4caf2c7fdb9
@@ -22,3 +22,8 @@ https://github.com/jensnti/te18-speltut/commit/bf0ec62dc1059b6f4750ea87c07966570
 
 Säg åt parcel att använda docs mapp istället för dist så att det funkar bra med github pages
 https://github.com/jensnti/te18-speltut/commit/d537644d7cacabf919dcd81a6046558edc8aeb7a
+
+Docs mappen innehöll lite annan problematik.
+Parcel behöver bygga för --public-url REPONAMNET för att det ska fungera med git pages
+
+"build": "parcel build src/index.html -d docs/ --public-url ./te18-speltut --experimental-scope-hoisting",
