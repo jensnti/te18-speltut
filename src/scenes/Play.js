@@ -7,7 +7,7 @@ export default class PlayScene extends Phaser.Scene {
       physics: {
         arcade: {
           gravity: { y: 300 },
-          debug: false
+          debug: true
         }
       }
     });
@@ -71,7 +71,7 @@ export default class PlayScene extends Phaser.Scene {
     //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
     this.stars = this.physics.add.group({
         key: 'star',
-        repeat: 11,
+        repeat: 1,
         setXY: { x: 12, y: 0, stepX: 70 }
     });
 
@@ -110,10 +110,11 @@ export default class PlayScene extends Phaser.Scene {
   }
 
   update () {
-    // if (this.gameOver)
-    // {
-    //     return;
-    // }
+    if (this.gameOver)
+    {
+        return;
+    }
+
     let speed = 400;
 
     if (this.scene.isVisible('pause')) {
@@ -181,7 +182,7 @@ export default class PlayScene extends Phaser.Scene {
 
       player.setTint(0xff0000);
 
-      player.anims.play('turn');
+      this.player.anims.stop();
 
       this.gameOver = true;
       this.scene.switch('end');
