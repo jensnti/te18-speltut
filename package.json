@@ -1,17 +1,17 @@
 {
   "name": "te18-phaser-exempel",
   "version": "1.0.0",
-  "description": "A Phaser 3 game template using Parcel bundler",
+  "description": "A Phaser 3 game example using Parcel bundler",
   "main": "src/index.html",
   "scripts": {
-    "build": "parcel build src/index.html -d docs/ -public-url ./ --experimental-scope-hoisting",
+    "build": "parcel build src/index.html -d docs/ --public-url ./te18-speltut --experimental-scope-hoisting",
     "watch": "parcel watch src/index.html -d docs/",
     "start": "parcel serve src/index.html -d docs/",
     "clean": "rm -v dist/*",
     "test": "npx eslint src"
   },
   "author": "Jens",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "parcel-plugin-static-files-copy": "^2.5.0",
     "phaser": "^3.20.1"
