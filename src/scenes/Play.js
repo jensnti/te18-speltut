@@ -36,7 +36,12 @@ export default class PlayScene extends Phaser.Scene {
     this.platforms.create(750, 220, 'ground');
 
     // The player and its settings
-    this.player = this.physics.add.sprite(100, 450, 'dude');
+    this.player = this.physics.add.sprite(
+      100,
+      450,
+      'cavedude'
+    )
+    .setScale(1);
 
     //  Player physics properties. Give the little guy a slight bounce.
     this.player.setBounce(0.2);
@@ -47,25 +52,17 @@ export default class PlayScene extends Phaser.Scene {
     this.camera.setBounds(-1000, 0, 4000, 600); // lite random "värld-bounds"
     this.camera.startFollow(this.player);
     
-    //  Our player animations, turning, walking left and walking right.
     this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'turn',
-        frames: [ { key: 'dude', frame: 4 } ],
-        frameRate: 20
-    });
-
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-        frameRate: 10,
-        repeat: -1
+      key: 'walk',
+      frames: this.anims.generateFrameNames('cavedude', {
+        frames: [
+          'dude_walk_0',
+          'dude_walk_1',
+          'dude_walk_2',
+          'dude_walk_3']
+      }),
+      frameRate: 10,
+      repeat: -1
     });
 
     //  Input Events
@@ -127,19 +124,21 @@ export default class PlayScene extends Phaser.Scene {
     {
       this.player.setVelocityX(-speed);
 
-      this.player.anims.play('left', true);
+      this.player.flipX = false;
+      this.player.anims.play('walk', true);
     }
     else if (this.cursors.right.isDown)
     {
       this.player.setVelocityX(speed);
 
-      this.player.anims.play('right', true);
+      this.player.flipX = true;
+      this.player.anims.play('walk', true);
     }
     else
     {
       this.player.setVelocityX(0);
 
-      this.player.anims.play('turn');
+      this.player.anims.stop();
     }
 
     if (this.cursors.up.isDown && this.player.body.touching.down)
