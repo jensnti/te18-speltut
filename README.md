@@ -26,4 +26,4 @@ https://github.com/jensnti/te18-speltut/commit/d537644d7cacabf919dcd81a6046558ed
 Docs mappen innehöll lite annan problematik.
 Parcel behöver bygga för --public-url REPONAMNET för att det ska fungera med git pages
 
-"build": "parcel build src/index.html -d docs/ --public-url ./te18-speltut --experimental-scope-hoisting",
+"build": "parcel build src/index.html -d docs/ --public-url /te18-speltut --experimental-scope-hoisting",
