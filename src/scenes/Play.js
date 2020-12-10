@@ -39,9 +39,9 @@ export default class PlayScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(
       100,
       450,
-      'cavedude'
+      'necromancer'
     )
-    .setScale(1);
+    .setScale(2);
 
     //  Player physics properties. Give the little guy a slight bounce.
     this.player.setBounce(0.2);
@@ -52,14 +52,40 @@ export default class PlayScene extends Phaser.Scene {
     this.camera.setBounds(-1000, 0, 4000, 600); // lite random "värld-bounds"
     this.camera.startFollow(this.player);
     
+    // this.anims.create({
+    //   key: 'walk',
+    //   frames: this.anims.generateFrameNames('cavedude', {
+    //     frames: [
+    //       'dude_walk_0',
+    //       'dude_walk_1',
+    //       'dude_walk_2',
+    //       'dude_walk_3']
+    //   }),
+    //   frameRate: 10,
+    //   repeat: -1
+    // });
+
     this.anims.create({
-      key: 'walk',
-      frames: this.anims.generateFrameNames('cavedude', {
+      key: 'idle',
+      frames: this.anims.generateFrameNames('necromancer', {
         frames: [
-          'dude_walk_0',
-          'dude_walk_1',
-          'dude_walk_2',
-          'dude_walk_3']
+          'necromancer_idle_anim_f0',
+          'necromancer_idle_anim_f1',
+          'necromancer_idle_anim_f2',
+          'necromancer_idle_anim_f3']
+      }),
+      frameRate: 5,
+      repeat: -1
+    });
+
+    this.anims.create({
+      key: 'run',
+      frames: this.anims.generateFrameNames('necromancer', {
+        frames: [
+          'necromancer_run_anim_f0',
+          'necromancer_run_anim_f1',
+          'necromancer_run_anim_f2',
+          'necromancer_run_anim_f3']
       }),
       frameRate: 10,
       repeat: -1
@@ -125,21 +151,22 @@ export default class PlayScene extends Phaser.Scene {
     {
       this.player.setVelocityX(-speed);
 
-      this.player.flipX = false;
-      this.player.anims.play('walk', true);
+      this.player.flipX = true;
+      this.player.anims.play('run', true);
     }
     else if (this.cursors.right.isDown)
     {
       this.player.setVelocityX(speed);
 
-      this.player.flipX = true;
-      this.player.anims.play('walk', true);
+      this.player.flipX = false;
+      this.player.anims.play('run', true);
     }
     else
     {
       this.player.setVelocityX(0);
 
-      this.player.anims.stop();
+      // this.player.anims.stop();
+      this.player.anims.play('idle', true);
     }
 
     if (this.cursors.up.isDown && this.player.body.touching.down)
