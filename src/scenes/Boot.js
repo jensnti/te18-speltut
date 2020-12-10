@@ -17,9 +17,15 @@ export default class BootScene extends Phaser.Scene {
     this.load.image('ground', images.platform);
     this.load.image('star', images.star);
     this.load.image('bomb', images.bomb);
+    
     this.load.multiatlas(
       'cavedude',
       'assets/cavedude.json',
+      'assets/');
+
+    this.load.multiatlas(
+      'necromancer',
+      'assets/necromancer.json',
       'assets/');
 
     this.load.on('progress', function (progress) {
