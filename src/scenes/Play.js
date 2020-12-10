@@ -36,21 +36,30 @@ export default class PlayScene extends Phaser.Scene {
     this.platforms.create(750, 220, 'ground');
 
     // The player and its settings
-    this.player = this.physics.add.sprite(
-      100,
-      450,
+    this.player = this.add.sprite(
+      0,
+      0,
       'necromancer'
     )
     .setScale(2);
 
+    this.playerContainer = this.add.container(100, 450);
+    this.playerContainer.setSize(32, 32);
+    this.physics.world.enable(this.playerContainer);
+    this.playerContainer.add(this.player);
+    // this.container.setDepth(3);
+
     //  Player physics properties. Give the little guy a slight bounce.
-    this.player.setBounce(0.2);
-    this.player.setCollideWorldBounds(false);
+    this.playerContainer.body.setBounce(0.2);
+    this.playerContainer.body.setCollideWorldBounds(false);
+
+    this.knife = this.add.sprite(0, 0, 'knife');
+    this.playerContainer.add(this.knife);
 
     // kamera som följer spelaren på x
     this.camera = this.cameras.main;
     this.camera.setBounds(-1000, 0, 4000, 600); // lite random "värld-bounds"
-    this.camera.startFollow(this.player);
+    this.camera.startFollow(this.playerContainer);
     
     // this.anims.create({
     //   key: 'walk',
@@ -114,14 +123,14 @@ export default class PlayScene extends Phaser.Scene {
     this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
     //  Collide the player and the stars with the platforms
-    this.physics.add.collider(this.player, this.platforms);
+    this.physics.add.collider(this.playerContainer, this.platforms);
     this.physics.add.collider(this.stars, this.platforms);
     this.physics.add.collider(this.bombs, this.platforms);
 
     // //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
+    this.physics.add.overlap(this.playerContainer, this.stars, this.collectStar, null, this);
 
-    this.physics.add.collider(this.player, this.bombs, this.hitBomb, null, this);
+    this.physics.add.collider(this.playerContainer, this.bombs, this.hitBomb, null, this);
 
     // this.scene.launch('pause');
     // // https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scenemanager/
@@ -136,6 +145,7 @@ export default class PlayScene extends Phaser.Scene {
   }
 
   update () {
+
     if (this.gameOver)
     {
         return;
@@ -149,29 +159,29 @@ export default class PlayScene extends Phaser.Scene {
 
     if (this.cursors.left.isDown)
     {
-      this.player.setVelocityX(-speed);
+      this.playerContainer.body.setVelocityX(-speed);
 
       this.player.flipX = true;
       this.player.anims.play('run', true);
     }
     else if (this.cursors.right.isDown)
     {
-      this.player.setVelocityX(speed);
+      this.playerContainer.body.setVelocityX(speed);
 
       this.player.flipX = false;
       this.player.anims.play('run', true);
     }
     else
     {
-      this.player.setVelocityX(0);
+      this.playerContainer.body.setVelocityX(0);
 
       // this.player.anims.stop();
       this.player.anims.play('idle', true);
     }
 
-    if (this.cursors.up.isDown && this.player.body.touching.down)
+    if (this.cursors.up.isDown && this.playerContainer.body.touching.down)
     {
-      this.player.setVelocityY(-330);
+      this.playerContainer.body.setVelocityY(-330);
     }
   }
 
@@ -192,7 +202,7 @@ export default class PlayScene extends Phaser.Scene {
 
           });
 
-          var x = (this.player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+          var x = (this.playerContainer.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
           var bomb = this.bombs.create(x, 16, 'bomb');
           bomb.setBounce(1);
@@ -217,6 +227,6 @@ export default class PlayScene extends Phaser.Scene {
 
   render () {
     this.game.debug.cameraInfo(this.game.camera, 32, 32);
-    this.game.debug.spriteCoords(this.player, 32, 500);
+    this.game.debug.spriteCoords(this.playerContainer, 32, 500);
   }
 }

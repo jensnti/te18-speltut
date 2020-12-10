@@ -4,11 +4,32 @@
 			"image": "necromancer.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 16,
-				"h": 80
+				"w": 78,
+				"h": 30
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "weapon_knife",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 6,
+						"h": 13
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 6,
+						"h": 13
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 6,
+						"h": 13
+					}
+				},
 				{
 					"filename": "necromancer_idle_anim_f0",
 					"rotated": false,
@@ -24,7 +45,7 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
+						"x": 6,
 						"y": 0,
 						"w": 16,
 						"h": 20
@@ -45,8 +66,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 20,
+						"x": 22,
+						"y": 0,
 						"w": 16,
 						"h": 20
 					}
@@ -66,8 +87,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 40,
+						"x": 38,
+						"y": 0,
 						"w": 16,
 						"h": 20
 					}
@@ -87,10 +108,31 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 60,
+						"x": 54,
+						"y": 0,
 						"w": 16,
 						"h": 20
+					}
+				},
+				{
+					"filename": "weapon_red_magic_staff",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 30
+					},
+					"frame": {
+						"x": 70,
+						"y": 0,
+						"w": 8,
+						"h": 30
 					}
 				},
 				{
@@ -108,7 +150,7 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
+						"x": 6,
 						"y": 0,
 						"w": 16,
 						"h": 20
@@ -129,8 +171,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 20,
+						"x": 22,
+						"y": 0,
 						"w": 16,
 						"h": 20
 					}
@@ -150,8 +192,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 40,
+						"x": 38,
+						"y": 0,
 						"w": 16,
 						"h": 20
 					}
@@ -171,8 +213,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 0,
-						"y": 60,
+						"x": 54,
+						"y": 0,
 						"w": 16,
 						"h": 20
 					}
