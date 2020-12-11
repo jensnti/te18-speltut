@@ -53,7 +53,8 @@ export default class PlayScene extends Phaser.Scene {
     this.playerContainer.body.setBounce(0.2);
     this.playerContainer.body.setCollideWorldBounds(false);
 
-    this.knife = this.add.sprite(0, 0, 'knife');
+    this.knife = this.add.sprite(32, 0, 'knife').setScale(2);
+    this.knife.angle = 90;
     this.playerContainer.add(this.knife);
 
     // kamera som följer spelaren på x
