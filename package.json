@@ -4,7 +4,7 @@
   "description": "A Phaser 3 game example using Parcel bundler",
   "main": "src/index.html",
   "scripts": {
-    "build": "rm -vr docs/* && parcel build src/index.html -d docs/ --public-url /te18-speltut --experimental-scope-hoisting",
+    "build": "rm -vr docs/* && parcel build src/index.html -d docs/ --public-url /te18-speltut --no-scope-hoist",
     "watch": "parcel watch src/index.html",
     "start": "parcel serve src/index.html",
     "clean": "rm -vr dist/* && rm -vr docs/*",

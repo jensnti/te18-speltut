@@ -17,10 +17,10 @@ export default class PlayScene extends Phaser.Scene {
     this.gameOver = false;
     this.score = 0;
     //  A simple background for our game
-    this.bg = this.add.image(400, 300, 'sky');
+    this.bg = this.add.image(400, 300, ['sky', 'sky']).setPipeline('Light2D');
     this.bg.setScrollFactor(0); // lås bakgrunden till kameran
 
-    this.cloud = this.add.image(32, 96, 'clip');
+    this.cloud = this.add.image(32, 96, ['clip', 'clip']).setPipeline('Light2D');
     this.cloud.setScrollFactor(0.2); // scrolla framf. bakgrunden i annan ratio
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
@@ -28,12 +28,14 @@ export default class PlayScene extends Phaser.Scene {
 
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    this.platforms.create(2000, 568, 'ground').setScale(20, 2).refreshBody(); // stort golv
+    this.platforms.create(2000, 568, 'ground').setScale(20, 2).refreshBody().setPipeline('Light2D'); // stort golv
 
     //  Now let's create some ledges
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
-    this.platforms.create(750, 220, 'ground');
+    this.platforms.create(600, 400, 'ground').setPipeline('Light2D');
+    this.platforms.create(50, 250, 'ground').setPipeline('Light2D');
+    this.platforms.create(750, 220, 'ground').setPipeline('Light2D');
+
+    this.add.image(0, 0, 'necromancer').setPipeline('Light2D');
 
     // The player and its settings
     this.player = this.add.sprite(
@@ -41,7 +43,7 @@ export default class PlayScene extends Phaser.Scene {
       0,
       'necromancer'
     )
-    .setScale(2);
+    .setScale(2).setPipeline('Light2D');
 
     this.playerContainer = this.add.container(100, 450);
     this.playerContainer.setSize(32, 32);
@@ -53,9 +55,22 @@ export default class PlayScene extends Phaser.Scene {
     this.playerContainer.body.setBounce(0.2);
     this.playerContainer.body.setCollideWorldBounds(false);
 
-    this.knife = this.add.sprite(32, 0, 'knife').setScale(2);
+    this.knife = this.add.sprite(32, 0, 'necromancer', 'weapon_knife').setScale(2).setPipeline('Light2D');
     this.knife.angle = 90;
     this.playerContainer.add(this.knife);
+
+    // var light  = this.lights.addLight(0, 0, 200);
+
+    // this.lights.enable().setAmbientColor(0x555555);
+
+    // this.input.on('pointermove', function (pointer) {
+
+    //     light.x = pointer.x;
+    //     light.y = pointer.y;
+
+    // });
+
+1
 
     // kamera som följer spelaren på x
     this.camera = this.cameras.main;
@@ -142,7 +157,6 @@ export default class PlayScene extends Phaser.Scene {
       // this.scene.moveUp('pause');
       this.scene.switch('pause');
     });
-
   }
 
   update () {
@@ -153,6 +167,9 @@ export default class PlayScene extends Phaser.Scene {
     }
 
     let speed = 400;
+
+    // this.playerLight.x = this.playerContainer.x;
+    // this.playerLight.y = this.playerContainer.y;
 
     if (this.scene.isVisible('pause')) {
       this.scene.setVisible(false, 'pause');
@@ -218,7 +235,7 @@ export default class PlayScene extends Phaser.Scene {
   {
       this.physics.pause();
 
-      player.setTint(0xff0000);
+      // player.setTint(0xff0000);
 
       this.player.anims.stop();
 

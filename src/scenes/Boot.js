@@ -12,12 +12,12 @@ export default class BootScene extends Phaser.Scene {
 
     console.table(images);
 
-    this.load.image('clip', images.clip);
-    this.load.image('sky', images.sky);
-    this.load.image('ground', images.platform);
-    this.load.image('star', images.star);
-    this.load.image('bomb', images.bomb);
-    this.load.image('knife', images.knife);
+    this.load.image('clip', [images.clip, images.normal]);
+    this.load.image('sky', [images.sky, images.normal]);
+    this.load.image('ground', [images.platform, images.normal]);
+    this.load.image('star', [images.star, images.normal]);
+    this.load.image('bomb', [images.bomb, images.normal]);
+    this.load.image('knife', [images.knife, images.normal]);
     
     this.load.multiatlas(
       'cavedude',

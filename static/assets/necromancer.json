@@ -2,6 +2,7 @@
 	"textures": [
 		{
 			"image": "necromancer.png",
+			"normalMap": "necromancer-normals.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 78,
