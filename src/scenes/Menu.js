@@ -6,9 +6,9 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create () {
-    this.add.image(400, 300, 'space');
+    this.add.image(400, 300, 'sky');
 
-    this.add.text(400, 200, 'Phaser 3 with Parcel\n\n< play >', {
+    this.add.text(400, 200, 'The ultra fantastic example game\n\n Click to start!', {
       align: 'center',
       fill: 'white',
       fontFamily: 'sans-serif',

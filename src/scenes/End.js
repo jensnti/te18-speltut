@@ -6,7 +6,7 @@ export default class EndScene extends Phaser.Scene {
   }
 
   create () {
-    this.add.image(400, 300, 'space');
+    this.add.image(400, 300, 'sky');
 
     this.add.text(400, 200, 'Game Over\n\n< menu >', {
       align: 'center',

@@ -10,7 +10,7 @@ export default class PauseScene extends Phaser.Scene {
 
     console.log(this.scene.isSleeping('play'));
 
-    this.add.text(400, 200, 'Pause Menu Test', {
+    this.add.text(400, 200, 'Pause Menu', {
       align: 'center',
       fill: 'white',
       fontFamily: 'sans-serif',
